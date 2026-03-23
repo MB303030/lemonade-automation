@@ -1,0 +1,20 @@
+{
+  "name": "lemonade-automation",
+  "version": "1.0.0",
+  "description": "Playwright E2E automation for Lemonade Insurance — public website + Blender backoffice skeleton",
+  "private": true,
+  "scripts": {
+    "test:website": "npx playwright test tests/website/",
+    "test:website:mobile": "npx playwright test tests/website/ --project='Mobile Chrome'",
+    "test:blender": "npx playwright test tests/blender/",
+    "test:all": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:report": "npx playwright show-report",
+    "setup:auth": "node helpers/auth.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.43.0",
+    "dotenv": "^16.4.5"
+  }
+}

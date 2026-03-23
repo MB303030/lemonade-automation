@@ -1,0 +1,10 @@
+node_modules/
+playwright-report/
+test-results/
+
+# Saved browser sessions — contain cookies, never commit
+fixtures/website-storage-state.json
+fixtures/auth-state.json
+
+# Environment variables — never commit real credentials
+.env

@@ -1,0 +1,63 @@
+{
+  "_comment": "Example policy data shapes. Real IDs must come from the staging environment — never commit actual IDs here. Ask QA lead or backend dev to seed these in staging before running Blender tests.",
+
+  "examples": {
+    "monthly": {
+      "id": "LCP-XXX-XXX-XXX",
+      "status": "Active",
+      "paymentPlan": "Monthly",
+      "premium": {
+        "amount": 25.00,
+        "currency": "USD",
+        "interval": "monthly"
+      },
+      "holder": {
+        "name": "Test User",
+        "email": "test@example.com"
+      },
+      "_note": "Used for: happy path Monthly → Semi-Annual, Dialog content (From=Monthly)"
+    },
+
+    "semi_annual": {
+      "id": "LCP-XXX-XXX-XXX",
+      "status": "Active",
+      "paymentPlan": "SemiAnnual",
+      "premium": {
+        "amount": 145.00,
+        "currency": "USD",
+        "interval": "semi-annual"
+      },
+      "holder": {
+        "name": "Test User 2",
+        "email": "test2@example.com"
+      },
+      "_note": "Used for: happy path Semi-Annual → Monthly, Dialog content (From=Semi-Annual)"
+    },
+
+    "cancelled": {
+      "id": "LCP-XXX-XXX-XXX",
+      "status": "Cancelled",
+      "paymentPlan": "Monthly",
+      "_note": "Used for: verifying Change Payment Plan option is disabled on cancelled policies"
+    },
+
+    "last_month": {
+      "id": "LCP-XXX-XXX-XXX",
+      "status": "Active",
+      "paymentPlan": "Monthly",
+      "lastPaymentDate": "previous month",
+      "_note": "Used for financial message scenario — payment was last month"
+    }
+  },
+
+  "expectedFields": [
+    "id",
+    "status",
+    "paymentPlan",
+    "premium.amount",
+    "premium.currency",
+    "premium.interval",
+    "holder.name",
+    "holder.email"
+  ]
+}
