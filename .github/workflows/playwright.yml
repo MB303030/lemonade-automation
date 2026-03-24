@@ -3,7 +3,18 @@ name: Playwright Tests
 on:
   push:
     branches: [main]
-  workflow_dispatch:  # allows manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: 'Which test suite to run?'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - website
+          - website:mobile
+          - blender
 
 permissions:
   contents: read
@@ -35,7 +46,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Run tests
-        run: npm run test:all
+        run: npm run test:${{ github.event.inputs.test_suite || 'all' }}
         env:
           SKIP_GLOBAL_SETUP: 'true'
         continue-on-error: true  # publish report even if tests fail
